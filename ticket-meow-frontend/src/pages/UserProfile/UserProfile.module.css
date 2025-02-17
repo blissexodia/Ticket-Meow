@@ -1,0 +1,50 @@
+/* src/pages/UserProfile/UserProfile.module.css */
+
+.userProfile {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .profileInfo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profileImg {
+    border-radius: 50%;
+    margin-right: 20px;
+    width: 150px;
+    height: 150px;
+  }
+  
+  .info p {
+    margin: 5px 0;
+  }
+  
+  .profileForm label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .profileForm input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+  }
+  
+  .profileForm button {
+    padding: 10px 15px;
+    background-color: #ffbf47;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .profileForm button:hover {
+    background-color: #ff9c0f;
+  }
+  

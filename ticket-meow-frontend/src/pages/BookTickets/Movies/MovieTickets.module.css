@@ -1,0 +1,54 @@
+.container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .heading {
+    color: #ff9900;
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .card {
+    background: #fff5e6;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    transition: transform 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .poster {
+    width: 100%;
+    border-radius: 8px;
+  }
+  
+  .title {
+    color: #ff6600;
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  .button {
+    background-color: #ffcc66;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .button:hover {
+    background-color: #ff9900;
+  }
+  

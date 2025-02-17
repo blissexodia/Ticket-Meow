@@ -1,0 +1,49 @@
+/* src/components/Navbar/Navbar.module.css */
+
+.navbar {
+  background-color: #fff3d4; /* Cozy yellow background */
+  padding: 10px 20px; /* Reduced padding for a smaller navbar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow to separate navbar */
+}
+
+.logo img {
+  width: 80px; /* Adjust size of the logo */
+  height: auto;
+}
+
+.navLinksContainer {
+  background-color: #ffeed0; /* Slightly darker yellow for contrast */
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.navLinks {
+  list-style: none;
+  display: flex;
+  gap: 30px; /* Spread out the links */
+}
+
+.navLinks li {
+  display: flex;
+  align-items: center;
+}
+
+.navLinks li a {
+  text-decoration: none;
+  color: #ff8c42;
+  font-weight: bold;
+  font-size: 1.3rem; /* Bigger font size */
+  font-family: 'Arial', sans-serif;
+  padding: 8px 15px;
+  border-radius: 5px;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.navLinks li a:hover {
+  color: #fff;
+  background-color: #ff8c42; /* Cozy orange background on hover */
+}

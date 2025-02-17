@@ -1,0 +1,58 @@
+.eventDetails {
+    text-align: center;
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff7e6;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .eventImage {
+    width: 100%;
+    border-radius: 10px;
+  }
+  
+  .eventTitle {
+    font-size: 2em;
+    color: #ff914d;
+    margin: 10px 0;
+  }
+  
+  .eventDescription {
+    font-size: 1.2em;
+    color: #333;
+    margin: 10px 0;
+  }
+  
+  .eventDate,
+  .eventTime,
+  .eventVenue {
+    font-size: 1em;
+    color: #555;
+    margin: 5px 0;
+  }
+  
+  .bookButton {
+    background-color: #ff914d;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+  }
+  
+  .bookButton:hover {
+    background-color: #ff6b2f;
+  }
+  
+  .backButton {
+    display: inline-block;
+    color: #ff914d;
+    text-decoration: none;
+    margin-top: 20px;
+  }
+  

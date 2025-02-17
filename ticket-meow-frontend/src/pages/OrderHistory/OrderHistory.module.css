@@ -1,0 +1,51 @@
+/* src/pages/OrderHistory/OrderHistory.module.css */
+
+.container {
+    background-color: #fffbf2;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 20px auto;
+  }
+  
+  .heading {
+    text-align: center;
+    color: #ff8c42;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .orderItem {
+    background-color: #fff3d4;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 15px;
+  }
+  
+  .orderItem h3 {
+    color: #ff6f3c;
+    margin: 0;
+  }
+  
+  .orderDetails {
+    color: #333;
+    margin-top: 10px;
+  }
+  
+  .viewDetails {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: #ff8c42;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+  }
+  
+  .viewDetails:hover {
+    background-color: #e67c33;
+  }
+  

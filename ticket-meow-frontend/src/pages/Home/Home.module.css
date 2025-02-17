@@ -1,0 +1,66 @@
+/* src/pages/Home/Home.module.css */
+.homeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #fff8e1, #ffe0b2);
+  text-align: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.catImageWrapper {
+  width: 80%;
+  max-width: 400px;
+  margin-bottom: 20px;
+}
+
+.catImage {
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.homeTitle {
+  color: #ff9800;
+  font-size: 2.5em;
+  font-family: 'Comic Sans MS', cursive;
+}
+
+.homeButtons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.homeButton {
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 25px;
+  font-size: 1em;
+  transition: background-color 0.3s;
+}
+
+.homeButton:hover {
+  opacity: 0.9;
+}
+
+.loginButton {
+  background-color: #ff9800;
+}
+
+.loginButton:hover {
+  background-color: #fb8c00;
+}
+
+.registerButton {
+  background-color: #ffa726;
+}
+
+.registerButton:hover {
+  background-color: #f57c00;
+}

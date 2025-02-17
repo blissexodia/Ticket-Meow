@@ -1,0 +1,75 @@
+/* src/components/Sidebar/Sidebar.module.css */
+
+.sidebar {
+  background-color: #f4e2b7;
+  border-right: 2px solid #f8c780;
+  padding: 20px;
+  width: 250px;
+  transition: transform 0.3s ease;
+  position: relative;
+  border-radius: 10px 0 0 10px;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.15);
+  height: 100vh;
+}
+
+.open {
+  transform: translateX(0);
+}
+
+.closed {
+  transform: translateX(-100%);
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: -45px;
+  background-color: #f8c780;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toggleButton:hover {
+  background-color: #f7b741;
+  transform: scale(1.1);
+}
+
+.menuContainer {
+  margin-top: 60px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  margin: 14px 0;
+}
+
+.menuItem {
+  text-decoration: none;
+  color: #f08a3d;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Arial', sans-serif;
+  transition: color 0.3s ease;
+  display: block;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+
+.menuItem:hover {
+  color: #fff;
+  background-color: #e67c33;
+}

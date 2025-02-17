@@ -1,0 +1,30 @@
+.container {
+    text-align: center;
+    padding: 2rem;
+  }
+  
+  .heading {
+    font-size: 2rem;
+    color: #ff9800;
+    margin-bottom: 1.5rem;
+  }
+  
+  .options {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+  }
+  
+  .option {
+    background-color: #fff3e0;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+  }
+  
+  .option:hover {
+    transform: scale(1.05);
+  }
+  
