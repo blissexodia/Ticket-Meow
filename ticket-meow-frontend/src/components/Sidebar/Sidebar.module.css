@@ -59,7 +59,7 @@
 
 .menuItem {
   text-decoration: none;
-  color: #f08a3d;
+  color: #e07b3c; /* Darkened color */
   font-size: 18px;
   font-weight: bold;
   font-family: 'Arial', sans-serif;
@@ -72,4 +72,28 @@
 .menuItem:hover {
   color: #fff;
   background-color: #e67c33;
+}
+
+/* Style for the Logout button */
+.menuItem button {
+  background-color: #ff4d4d; /* Brighter red for more attention */
+  color: white;
+  border: none;
+  padding: 12px 15px;
+  font-size: 18px;
+  font-weight: bold;
+  width: 100%;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  margin-top: 20px; /* Add some space above it */
+}
+
+.menuItem button:hover {
+  background-color: #ff3333; /* Darker red when hovered */
+  transform: scale(1.05); /* Slightly scale up for emphasis */
+}
+
+.menuItem button:focus {
+  outline: none;
 }
