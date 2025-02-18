@@ -1,66 +1,98 @@
 /* src/pages/Register/Register.module.css */
 .registerContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 70px);
-    background-color: #fff9e6;
-  }
-  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 70px);
+  background-color: #fff9e6;
+  padding: 20px;
+}
+
+.registerBox {
+  background: #fff3d4;
+  padding: 40px 30px;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+  transition: transform 0.3s;
+}
+
+.registerBox:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  color: #ff8c42;
+  margin-bottom: 20px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ffd699;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #ffa64d;
+  box-shadow: 0 0 8px rgba(255, 166, 77, 0.5);
+}
+
+.registerButton {
+  background-color: #ffcc80;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: bold;
+  transition: background 0.3s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.registerButton:hover {
+  background-color: #ffa64d;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+a {
+  color: #ff8c42;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #e67300;
+  text-decoration: underline;
+}
+
+.error {
+  color: #e60000;
+  font-size: 0.9em;
+  text-align: left;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+@media (max-width: 480px) {
   .registerBox {
-    background: #fff3d4;
-    padding: 40px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
+    padding: 30px 20px;
   }
-  
+
   h2 {
-    color: #ff8c42;
-    margin-bottom: 20px;
+    font-size: 1.5em;
   }
-  
-  input {
-    width: 100%;
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #ffd699;
-    border-radius: 10px;
-    box-sizing: border-box;
-  }
-  
+
   .registerButton {
-    background-color: #ffcc80;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    color: #fff;
-    font-weight: bold;
-    transition: background 0.3s;
+    width: 100%;
   }
-  
-  .registerButton:hover {
-    background-color: #ffa64d;
-  }
-  
-  a {
-    color: #ff8c42;
-    text-decoration: none;
-    font-weight: bold;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  .error {
-    color: red;
-    font-size: 0.9em;
-    text-align: left;
-    margin-top: -10px;
-    margin-bottom: 10px;
-  }
-  
+}

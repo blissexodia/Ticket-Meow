@@ -1,21 +1,44 @@
-// src/context/AuthContext.js
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useContext, useState, useEffect } from 'react';
+import axios from '../api/axios';
 
 const AuthContext = createContext();
 
-export const useAuth = () => {
-  return useContext(AuthContext);
-};
-
 export const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState(null); // user will be null if not logged in
+  const [user, setUser] = useState(null);
 
-  const login = (userData) => {
-    setUser(userData); // Set user when logging in
+  // Fetch user data if the token is present
+  useEffect(() => {
+    const fetchUser = async () => {
+      const token = localStorage.getItem('token');
+      if (token) {
+        try {
+          const response = await axios.get('/auth/profile', {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          });
+          setUser(response.data); // Set user data if token is valid
+        } catch (err) {
+          console.error(err);
+          setUser(null);
+        }
+      }
+    };
+
+    fetchUser();
+  }, []);
+
+  // Login method
+  const login = async (email, password) => {
+    const response = await axios.post('/auth/login', { email, password });
+    localStorage.setItem('token', response.data.token); // Save the token to localStorage
+    setUser(response.data.user);
   };
 
+  // Logout method
   const logout = () => {
-    setUser(null); // Reset user to null when logging out
+    localStorage.removeItem('token');
+    setUser(null);
   };
 
   return (
@@ -24,3 +47,5 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
+
+export const useAuth = () => useContext(AuthContext);

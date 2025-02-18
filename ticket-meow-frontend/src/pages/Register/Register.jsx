@@ -1,13 +1,17 @@
 // src/pages/Register/Register.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axiosInstance from "../../api/axios";
 import styles from "./Register.module.css";
 
 const Register = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [errors, setErrors] = useState({});
+  const [serverError, setServerError] = useState("");
+  const navigate = useNavigate();
 
   // Validation Functions
   const validateEmail = (email) => {
@@ -27,9 +31,10 @@ const Register = () => {
     );
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const newErrors = {};
+    setServerError("");
 
     // Email Validation
     if (!validateEmail(email)) {
@@ -49,9 +54,23 @@ const Register = () => {
 
     setErrors(newErrors);
 
-    // If no errors, proceed
+    // If no errors, proceed with registration
     if (Object.keys(newErrors).length === 0) {
-      console.log("Email:", email, "Password:", password);
+      try {
+        const response = await axiosInstance.post("/auth/register", {
+          name,
+          email,
+          password,
+        });
+        console.log("Registration Success:", response.data);
+        alert("Registration successful! You can now log in.");
+        navigate("/login");
+      } catch (err) {
+        console.error("Registration Error:", err);
+        setServerError(
+          err.response?.data?.message || "Something went wrong. Please try again."
+        );
+      }
     }
   };
 
@@ -60,6 +79,13 @@ const Register = () => {
       <div className={styles.registerBox}>
         <h2>Create Your Account 😺</h2>
         <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
           <input
             type="email"
             placeholder="Email"
@@ -89,6 +115,10 @@ const Register = () => {
           />
           {errors.confirmPassword && (
             <p className={styles.error}>{errors.confirmPassword}</p>
+          )}
+
+          {serverError && (
+            <p className={styles.error}>{serverError}</p>
           )}
 
           <button type="submit" className={styles.registerButton}>

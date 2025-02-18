@@ -1,0 +1,62 @@
+/* EditProfile.module.css */
+.editProfile {
+    padding: 20px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .profileForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .profileForm label {
+    font-size: 1.1rem;
+    color: #ff8c42; /* Cozy orange */
+    margin-bottom: 10px;
+  }
+  
+  .profileForm input {
+    padding: 10px;
+    border: 1px solid #ffd699; /* Light orange border */
+    border-radius: 8px;
+    font-size: 1rem;
+    margin-top: 5px;
+  }
+  
+  .profileForm input:focus {
+    outline: none;
+    border-color: #ff8c42; /* Focused border color */
+    box-shadow: 0 0 5px rgba(255, 140, 66, 0.5);
+  }
+  
+  .profileForm button {
+    padding: 10px 15px;
+    background-color: #ffbf47; /* Soft yellow-orange background */
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+    border-radius: 8px;
+  }
+  
+  .profileForm button:hover {
+    background-color: #ff9c0f; /* Darker orange on hover */
+  }
+  
+  .success, .error {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 15px;
+  }
+  
+  .success {
+    color: green;
+  }
+  
+  .error {
+    color: red;
+  }
+  
