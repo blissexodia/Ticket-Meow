@@ -16,6 +16,15 @@ const Dashboard = () => {
           return;
         }
 
+        const decodedToken = jwt.decode(token);
+        const currentTime = Date.now() / 1000; // Current time in seconds
+        if (decodedToken.exp < currentTime) {
+          localStorage.removeItem('token');
+          setError('Session expired. Please log in again.');
+          setLoading(false);
+          return;
+        }
+
         const response = await fetch("http://localhost:5000/api/auth/dashboard", {
           method: "GET",
           headers: {
@@ -27,8 +36,6 @@ const Dashboard = () => {
         if (response.ok) {
           const data = await response.json();
           setUserData(data);
-        } else if (response.status === 401) {
-          setError("Unauthorized. Please log in again.");
         } else {
           setError("Failed to load dashboard data.");
         }

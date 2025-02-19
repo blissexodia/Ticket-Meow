@@ -1,45 +1,37 @@
-// src/pages/OrderHistory/OrderHistory.jsx
 import React from "react";
+import { useOrderHistory } from "../../context/OrderHistoryContext";
 import styles from "./OrderHistory.module.css";
 
 const OrderHistory = () => {
-  // Dummy Data for now
-  const orders = [
-    {
-      id: 1,
-      eventName: "Cat Concert",
-      date: "2025-02-01",
-      tickets: 2,
-      totalPrice: "$50",
-      status: "Confirmed",
-    },
-    {
-      id: 2,
-      eventName: "Kitten Comedy Show",
-      date: "2025-01-25",
-      tickets: 1,
-      totalPrice: "$30",
-      status: "Canceled",
-    },
-  ];
+  const { orderHistory } = useOrderHistory();
 
   return (
-    <div className={styles.container}>
-      <h2 className={styles.heading}>Order History</h2>
-      {orders.map((order) => (
-        <div key={order.id} className={styles.orderItem}>
-          <h3>{order.eventName}</h3>
-          <div className={styles.orderDetails}>
-            <p>Date of Purchase: {order.date}</p>
-            <p>Number of Tickets: {order.tickets}</p>
-            <p>Total Price: {order.totalPrice}</p>
-            <p>Status: {order.status}</p>
-            <a href="#" className={styles.viewDetails}>
-              View Details
-            </a>
-          </div>
-        </div>
-      ))}
+    <div className={styles.orderHistoryContainer}>
+      <h1>Order History</h1>
+      {orderHistory.length === 0 ? (
+        <p>You have no past orders.</p>
+      ) : (
+        <ul className={styles.orderList}>
+          {orderHistory.map((order, index) => (
+            <li key={index} className={styles.orderItem}>
+              <h3>Order #{index + 1}</h3>
+              <p><strong>Date:</strong> {order.date}</p>
+              <ul className={styles.itemList}>
+                {order.items.map((item, idx) => (
+                  <li key={idx} className={styles.item}>
+                    <img src={item.image || "/default-image.jpg"} alt={item.title} className={styles.itemImage} />
+                    <div>
+                      <p><strong>{item.title}</strong></p>
+                      <p>{item.price}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+              <p><strong>Total:</strong> ${order.total}</p>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

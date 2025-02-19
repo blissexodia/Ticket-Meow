@@ -74,12 +74,22 @@
   background-color: #e67c33;
 }
 
+/* Style for the Dashboard title */
+.menuItemTitle {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #d45d27; /* Highlighted color for the title */
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
 /* Style for the Logout button */
 .menuItem button {
   background-color: #ff4d4d; /* Brighter red for more attention */
   color: white;
   border: none;
-  padding: 12px 15px;
+  padding: 14px 18px; /* Increased padding for a bigger button */
   font-size: 18px;
   font-weight: bold;
   width: 100%;

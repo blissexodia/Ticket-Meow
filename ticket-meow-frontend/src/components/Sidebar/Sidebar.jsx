@@ -1,12 +1,12 @@
-// src/components/Sidebar/Sidebar.jsx
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../context/AuthContext";  // Import the useAuth hook
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate instead of useHistory
+import { useAuth } from "../../context/AuthContext";
 import styles from "./Sidebar.module.css";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(true);
-  const { logout } = useAuth();  // Get the logout function
+  const { logout } = useAuth();
+  const navigate = useNavigate(); // Initialize useNavigate hook for navigation
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
@@ -14,6 +14,7 @@ const Sidebar = () => {
 
   const handleLogout = () => {
     logout();  // Call the logout function
+    navigate("/login");  // Redirect to login page after logout
   };
 
   return (
@@ -23,10 +24,9 @@ const Sidebar = () => {
       </button>
       <div className={styles.menuContainer}>
         <ul className={styles.menu}>
-          <li>
-            <Link to="/dashboard" className={styles.menuItem}>
-              Dashboard
-            </Link>
+          {/* Replace Dashboard link with a title */}
+          <li className={styles.menuItemTitle}>
+            Dashboard
           </li>
           <li>
             <Link to="/user-profile" className={styles.menuItem}>
@@ -44,7 +44,7 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <button onClick={handleLogout} className={styles.menuItem}>
+            <button onClick={handleLogout} className={`${styles.menuItem} ${styles.logoutButton}`}>
               Logout
             </button>
           </li>

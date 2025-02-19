@@ -1,13 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PaymentFailure = () => {
   return (
     <div>
-      <h1>Payment Failed</h1>
-      <p>Oops! Something went wrong with your payment. Please try again.</p>
+      <h1>Payment Failed. Please try again.</h1>
+      <Link to="/cart">Go back to Cart</Link>
     </div>
   );
 };
 
-// Make sure this line is present!
 export default PaymentFailure;

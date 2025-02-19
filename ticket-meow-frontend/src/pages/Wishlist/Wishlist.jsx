@@ -1,42 +1,30 @@
 import React from "react";
+import { useWishlist } from "../../context/WishlistContext";
 import styles from "./Wishlist.module.css";
 
 const Wishlist = () => {
-  // Dummy data for now
-  const favoriteTickets = [
-    {
-      id: 1,
-      eventName: "Cat Concert",
-      date: "March 25, 2025",
-      location: "Meow Arena",
-      price: "$50",
-    },
-    {
-      id: 2,
-      eventName: "Purrfect Play",
-      date: "April 10, 2025",
-      location: "Whisker Theater",
-      price: "$30",
-    },
-  ];
+  const { wishlist, removeFromWishlist } = useWishlist();
 
   return (
     <div className={styles.wishlistContainer}>
-      <h2>My Wishlist</h2>
-      {favoriteTickets.length > 0 ? (
-        <ul className={styles.ticketList}>
-          {favoriteTickets.map((ticket) => (
-            <li key={ticket.id} className={styles.ticketItem}>
-              <h3>{ticket.eventName}</h3>
-              <p>Date: {ticket.date}</p>
-              <p>Location: {ticket.location}</p>
-              <p>Price: {ticket.price}</p>
-              <button className={styles.removeButton}>Remove</button>
+      <h1>Your Wishlist</h1>
+      {wishlist.length === 0 ? (
+        <p>Your wishlist is empty</p>
+      ) : (
+        <ul className={styles.wishlistItems}>
+          {wishlist.map((item, index) => (
+            <li key={index} className={styles.wishlistItem}>
+              <img src={item.image || "/default-image.jpg"} alt={item.title} className={styles.itemImage} />
+              <div className={styles.itemDetails}>
+                <h3>{item.title}</h3>
+                <p>{item.price}</p>
+              </div>
+              <button onClick={() => removeFromWishlist(item.id)} className={styles.removeButton}>
+                Remove
+              </button>
             </li>
           ))}
         </ul>
-      ) : (
-        <p>No items in your wishlist yet!</p>
       )}
     </div>
   );

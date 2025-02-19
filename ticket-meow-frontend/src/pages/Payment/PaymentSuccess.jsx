@@ -1,13 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PaymentSuccess = () => {
   return (
     <div>
       <h1>Payment Successful!</h1>
-      <p>Thank you for your purchase. Your payment was processed successfully.</p>
+      <Link to="/order-history">View Order History</Link>
     </div>
   );
 };
 
-// Make sure this line is present!
 export default PaymentSuccess;
