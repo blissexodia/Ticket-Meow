@@ -1,53 +1,61 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCart } from '../../context/CartContext';
-import { useAuth } from '../../context/AuthContext';  // Assuming user info is needed
-import styles from './Checkout.module.css'; // Use Checkout.module.css for styles
+import { useAuth } from '../../context/AuthContext';
+import { useOrderHistory } from '../../context/OrderHistoryContext';  // Import useOrderHistory
+import styles from './Checkout.module.css';
 
 const Checkout = () => {
-  const { cartItems, totalAmount, clearCart } = useCart(); // Get cart items and total
-  const { user } = useAuth(); // Get user info (e.g., for pre-filling form)
+  const { cart, clearCart, getTotalPrice } = useCart();
+  const { user } = useAuth();
+  const { addOrder } = useOrderHistory();  // Get the addOrder function
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     name: user?.name || '',
     email: user?.email || '',
-    paymentMethod: ''
+    paymentMethod: '',
   });
 
-  const [paymentStatus, setPaymentStatus] = useState(null); // Success or failure state
+  const [paymentStatus, setPaymentStatus] = useState(null);
 
-  useEffect(() => {
-    if (cartItems.length === 0) {
-      navigate('/cart'); // If no items, redirect to cart page
-    }
-  }, [cartItems, navigate]);
-
-  // Handle form change
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
-      [name]: value
+      [name]: value,
     }));
   };
 
-  // Handle form submission (and payment logic here)
   const handleCheckout = (e) => {
     e.preventDefault();
-    
-    // Simple validation (e.g., check if all fields are filled)
+
     if (!formData.name || !formData.email || !formData.paymentMethod) {
       alert('Please fill in all fields');
       return;
     }
 
-    // Simulate a payment process (can be replaced with Stripe/PayPal logic)
-    const paymentSuccess = true; // Simulated payment result
+    // Simulating payment success or failure
+    const paymentSuccess = true; // You can toggle this for testing
 
     if (paymentSuccess) {
       setPaymentStatus('success');
-      clearCart(); // Clear cart on successful payment
+      clearCart(); // Empty the cart after successful "payment"
+
+      // Add the order to the order history
+      const order = {
+        user: {
+          name: formData.name,
+          email: formData.email,
+        },
+        items: cart,
+        total: getTotalPrice(),
+        paymentMethod: formData.paymentMethod,
+        date: new Date().toLocaleString(),
+      };
+
+      addOrder(order); // Add the order to the history
+
       navigate('/payment/success');
     } else {
       setPaymentStatus('failure');
@@ -59,20 +67,20 @@ const Checkout = () => {
     <div className={styles.checkoutContainer}>
       <h2>Checkout</h2>
 
-      {/* Display Cart Items */}
       <div className={styles.cartItems}>
         <h3>Your Cart</h3>
         <ul>
-          {cartItems.map((item, index) => (
+          {cart.map((item, index) => (
             <li key={index}>
-              <strong>{item.name}</strong> - {item.quantity} x ${item.price}
+              <strong>{item.title}</strong> - ${item.price}
             </li>
           ))}
         </ul>
-        <p><strong>Total: ${totalAmount}</strong></p>
+        <p>
+          <strong>Total: ${getTotalPrice()}</strong>
+        </p>
       </div>
 
-      {/* Payment Status Message */}
       {paymentStatus && (
         <div className={styles.paymentStatus}>
           {paymentStatus === 'success' ? (
@@ -83,10 +91,9 @@ const Checkout = () => {
         </div>
       )}
 
-      {/* Billing Information Form */}
       <form onSubmit={handleCheckout} className={styles.checkoutForm}>
         <h3>Billing Information</h3>
-        
+
         <label htmlFor="name">Name:</label>
         <input
           type="text"

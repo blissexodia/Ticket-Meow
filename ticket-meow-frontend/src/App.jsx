@@ -25,7 +25,7 @@ import Sidebar from "./components/Sidebar/Sidebar";
 import { CartProvider } from "./context/CartContext";
 import { AuthProvider, useAuth } from "./context/AuthContext";
 import { WishlistProvider } from "./context/WishlistContext";
-import { OrderHistoryProvider } from "./context/OrderHistoryContext"; // Added OrderHistoryProvider
+import { OrderHistoryProvider } from "./context/OrderHistoryContext";
 
 // Scroll Restoration Hook
 const ScrollToTop = () => {
@@ -49,7 +49,7 @@ const App = () => {
     <AuthProvider>
       <CartProvider>
         <WishlistProvider>
-          <OrderHistoryProvider> {/* Wrap with OrderHistoryProvider */}
+          <OrderHistoryProvider>
             <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
               <Navbar />
               <div style={{ display: "flex", flex: 1 }}>
